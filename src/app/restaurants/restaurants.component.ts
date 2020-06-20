@@ -1,33 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from './restaurant/restaurant.model';
+import { RestaurantsService } from './restaurants.services';
 
 @Component({
   selector: 'meat-restaurants',
   templateUrl: './restaurants.component.html',
-  styleUrls: ['./restaurants.component.css']
 })
 export class RestaurantsComponent implements OnInit {
-  restaurants:Restaurant[] = [
-    {
-      id: "bread-bakery",
-      name: "Bread & Bakery",
-      category: "Bakery",
-      deliveryEstimate: "25m",
-      rating: 4.9,
-      imagePath: "assets/img/restaurants/breadbakery.png",
-    },
-    {
-      id: "burger-house",
-      name: "Burger House",
-      category: "Hamburgers",
-      deliveryEstimate: "100m",
-      rating: 3.5,
-      imagePath: "assets/img/restaurants/burgerhouse.png",
-    },
-  ]
-  constructor() { }
-
+  restaurants:Restaurant[]
+  constructor(private restaurantsService: RestaurantsService) { }
+  
+  /*é chamado uma vez no ciclo de vida*/
   ngOnInit(): void {
+     
+      this.restaurantsService.restaurants().subscribe((restaurants : Restaurant[]) => {
+      this.restaurants = restaurants});
   }
 
 }
