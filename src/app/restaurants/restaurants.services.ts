@@ -40,7 +40,7 @@ export class RestaurantsService{
                     )
         }
 
-        reviewsByRestaurant(id:number): Observable<Review[]>{
+        reviewsOfRestaurant(id:number): Observable<Review[]>{
             return this.http.get<Review[]>(`${MEAT_API}/restaurants/${id}/reviews`)
                 .pipe(
                     retry(2),
