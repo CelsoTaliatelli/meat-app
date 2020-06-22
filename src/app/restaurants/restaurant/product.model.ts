@@ -1,8 +1,8 @@
-export interface Product{
-      id: number,
-      imagePath: string,
-      name: string,
-      description: string,
-      price: string,
-      restaurantId: number
+export interface Product {
+      id: string
+      imagePath: string
+      name: string
+      description: string
+      price: number
+      restaurantId: string
 }
