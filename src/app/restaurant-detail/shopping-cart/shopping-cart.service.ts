@@ -1,14 +1,27 @@
+import { CartItem } from './cart-item.model'
+import { Product } from 'src/app/restaurants/restaurant/product.model'
+
 export class ShoppingCartService{
-    items: any[]
+    items: CartItem[] = []
 
     clear(){
-
+        this.items = []
     }
 
-    addItem(item:any){}
-    removeItem(item:any){}
+    addItem(item:Product){
+        let foundItem = this.items.find((mItem) => mItem.menuItem.id === item.id)
+        if(foundItem) {
+            foundItem.quantity = foundItem.quantity + 1
+        }else{
+            this.items.push(new CartItem(item))
+        }
+    }
+    removeItem(item:CartItem){
+        this.items.splice(this.items.indexOf(item),1)
+    }
 
     total(): number{
-        return 0
+        return this.items.map(item => item.value())
+        .reduce((prev,value) => prev+value,0)
     }
 }
