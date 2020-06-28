@@ -24,12 +24,12 @@
               <input class="form-control" name="Address" ngModel required autocomplete="off">
             </meat-input-container>
             </div>
-            <div class="col-sm-2 col-xs-6">
-              <meat-input-container errorMessage="Campo obrigatório" successMessage="Sucesso!" label="Numero">
-                <input type="text" class="form-control" name="number" ngModel required>
+            <div class="col-sm-3 col-xs-6">
+              <meat-input-container errorMessage="Campo obrigatório e somente números" successMessage="Sucesso!" label="Numero">
+                <input type="text" class="form-control" name="number" pattern="^[0-9]*$" ngModel required>
               </meat-input-container>
             </div>
-            <div class="col-sm-4 col-xs-6">
+            <div class="col-sm-3 col-xs-6">
               <meat-input-container errorMessage="Campo obrigatório" successMessage="Sucesso!" label="Complemento">
                 <input type="text" class="form-control" name="optional" ngModel required>
               </meat-input-container>
